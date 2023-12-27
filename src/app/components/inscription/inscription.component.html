@@ -1,0 +1,14 @@
+<div>
+  <h2>Inscription</h2>
+
+  <label>Email: </label>
+  <input type="email" [(ngModel)]="email" />
+
+  <label>Mot de passe: </label>
+  <input type="password" [(ngModel)]="password" />
+
+  <label>Nom d'utilisateur: </label>
+  <input type="text" [(ngModel)]="displayName" required />
+
+  <button (click)="signup()">S'inscrire</button>
+</div>
