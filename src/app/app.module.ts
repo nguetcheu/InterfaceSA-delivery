@@ -8,13 +8,19 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
-import { InscriptionComponent } from './components/inscription/inscription.component';
 import { FormsModule } from '@angular/forms';
-import { ConnexionComponent } from './components/connexion/connexion.component';
+
+/* Composant commun a tout app web */
+import { AccueilComponent } from './common/accueil/accueil.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { ConnexionComponent } from './common/connexion/connexion.component';
+import { InscriptionComponent } from './common/inscription/inscription.component';
+import { NotFoundComponent } from './common/not-found/not-found.component';
+
+/* Composant fonctionnel de application */
+
 import { ClientComponent } from './components/client/client.component';
-import { AccueilComponent } from './components/accueil/accueil.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AccueilComponent,
     NavbarComponent,
     FooterComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
