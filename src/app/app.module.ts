@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { ClientComponent } from './components/client/client.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AccueilComponent } from './components/accueil/accueil.component';
     ConnexionComponent,
     ClientComponent,
     AccueilComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
