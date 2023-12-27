@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -10,7 +11,7 @@ export class ConnexionComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,5 +20,9 @@ export class ConnexionComponent implements OnInit {
       console.error('Erreur lors de la connexion :', error);
       // Gère les erreurs ici
     });
+  }
+
+  goToSignUp() {
+    this.router.navigate(['inscription']);
   }
 }

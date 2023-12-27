@@ -53,12 +53,20 @@
             <div class="row">
               <div class="col-12">
                 <div class="mb-4">
-                  <h3>Inscription</h3>
-                  <p>Don't have an account? <a href="#!">Sign up</a></p>
+                  <h3>Connexion</h3>
+                  <p>
+                    Don't have an account?
+                    <a
+                      class="bg-primary"
+                      style="color: black; cursor: pointer"
+                      (click)="goToSignUp()"
+                      >Sign up</a
+                    >
+                  </p>
                 </div>
               </div>
             </div>
-            <form action="#!">
+            <form>
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
                   <div class="form-floating mb-3">
@@ -93,7 +101,7 @@
                       type="submit"
                       (click)="login()"
                     >
-                      S'inscrire
+                      Connexion
                     </button>
                   </div>
                 </div>

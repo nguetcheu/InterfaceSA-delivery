@@ -21,6 +21,7 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 /* Composant fonctionnel de application */
 
 import { ClientComponent } from './components/client/client.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ClientComponent } from './components/client/client.component';
     NavbarComponent,
     FooterComponent,
     NotFoundComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

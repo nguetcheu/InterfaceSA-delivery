@@ -31,4 +31,8 @@ export class InscriptionComponent implements OnInit {
         // Gère les erreurs ici
       });
   }
+
+  goToLogin() {
+    this.router.navigate(['connexion']);
+  }
 }
