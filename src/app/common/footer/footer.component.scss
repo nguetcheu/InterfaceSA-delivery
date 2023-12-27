@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Force le corps à prendre au moins la hauteur de la fenêtre visible */
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1; /* Fait en sorte que le contenu principal prenne toute la hauteur restante */
+}
+
+footer {
+  background-color: #3b71ca; /* Couleur de fond de votre pied de page */
+  color: #fff; /* Couleur du texte de votre pied de page */
+  padding: 10px; /* Ajoutez une marge interne pour l'espace autour du contenu du pied de page */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+footer li a{
+  color:#313131;
+  font-weight:500
+}
+footer ul li{
+  display:inline-block;
+  font-size:14px;
+  padding:10px 20px
+}

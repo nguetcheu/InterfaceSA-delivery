@@ -13,6 +13,11 @@ export class AuthService {
     private router: Router
   ) {}
 
+  async getUserEmail(): Promise<string | null> {
+    const user = await this.afAuth.currentUser;
+    return user ? user.email : null;
+  }
+
   // Méthode d'inscription qui enregistre également des informations dans Firestore
   signup(email: string, password: string, displayName: string): Promise<any> {
     return this.afAuth
