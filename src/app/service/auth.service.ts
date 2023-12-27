@@ -24,16 +24,31 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // Enregistre des informations supplémentaires dans Firestore avec le rôle par défaut "user"
-        return this.firestore.collection('utilisateurs').doc(user?.uid).set({
-          uid: user?.uid,
-          email: email,
-          displayName: displayName,
-          role: 'client',
-        });
+        // Enregistre des informations supplémentaires dans Firestore avec le rôle par défaut "client"
+        return this.firestore
+          .collection('utilisateurs')
+          .doc(user?.uid)
+          .set({
+            uid: user?.uid,
+            email: email,
+            displayName: displayName,
+            role: 'client',
+          })
+          .then(() => {
+            // Stocke les informations d'authentification dans sessionStorage
+            sessionStorage.setItem(
+              'user',
+              JSON.stringify({
+                uid: user?.uid,
+                email: email,
+                role: 'client',
+              })
+            );
+          });
       })
       .catch((error) => {
-        throw error; // Gère les erreurs ici
+        console.error('Signup error:', error);
+        throw error;
       });
   }
 
@@ -44,12 +59,49 @@ export class AuthService {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
-          // Vérifie le rôle et redirige en conséquence
-          this.checkUserRoleAndRedirect(user.uid);
+          // Récupère les informations supplémentaires depuis Firestore
+          this.firestore
+            .collection('utilisateurs')
+            .doc(user.uid)
+            .get()
+            .subscribe((doc) => {
+              if (doc.exists) {
+                const userData = doc.data() as { role: string };
+
+                // Stocke les informations d'authentification dans sessionStorage
+                sessionStorage.setItem(
+                  'user',
+                  JSON.stringify({
+                    uid: user.uid,
+                    email: email,
+                    role: userData.role,
+                  })
+                );
+
+                // Vérifie le rôle et redirige en conséquence
+                this.checkUserRoleAndRedirect(user.uid);
+              }
+            });
         }
       })
       .catch((error) => {
-        throw error; // Gère les erreurs ici
+        console.error('Login error:', error);
+        throw error;
+      });
+  }
+
+  // Méthode de déconnexion
+  logout(): Promise<void> {
+    return this.afAuth
+      .signOut()
+      .then(() => {
+        // Supprime les informations d'authentification de sessionStorage
+        sessionStorage.removeItem('user');
+        this.router.navigate(['/connexion']);
+      })
+      .catch((error) => {
+        console.error('Logout error:', error);
+        throw error;
       });
   }
 

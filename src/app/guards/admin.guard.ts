@@ -13,19 +13,28 @@ import { AuthService } from '../service/auth.service';
 export class AuthGuardAdmin implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  async canActivate(
+  canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<boolean> {
-    const userEmail = await this.authService.getUserEmail();
+  ): boolean {
+    const storedUserString = sessionStorage.getItem('user');
 
-    if (userEmail === 'admin@gmail.com') {
-      // Accès autorisé pour l'utilisateur avec l'email spécifié
-      return true;
+    if (storedUserString) {
+      // Si l'utilisateur est présent dans sessionStorage, analysez l'objet user
+      const storedUser = JSON.parse(storedUserString);
+
+      if (storedUser && storedUser.email === 'admin@gmail.com' && storedUser.role === 'admin') {
+        // Accès autorisé pour l'utilisateur avec l'email spécifié et le rôle admin
+        return true;
+      } else {
+        // Redirigez vers une page non autorisée si l'utilisateur n'a pas le rôle d'admin
+        alert('Cette page est réservée aux administrateurs.');
+        this.router.navigate(['/connexion']);
+        return false;
+      }
     } else {
-      // Redirigez vers une page non autorisée si l'email ne correspond pas
-      alert('Cette page est pour admin');
-      this.router.navigate(['/inscription']);
+      // Redirigez vers la page de connexion si l'utilisateur n'est pas présent dans sessionStorage
+      this.router.navigate(['/connexion']);
       return false;
     }
   }
