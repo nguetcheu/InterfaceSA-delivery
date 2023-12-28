@@ -1,3 +1,45 @@
-<p>client works!</p>
-
-<button (click)="logout()">Déconnexion</button>
+<!DOCTYPE html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<body>
+  <input type="checkbox" id="menu_active" checked />
+  <div id="wrapper" class="active">
+    <div id="menu">
+      <span id="site-name"
+        ><label for="menu_active"
+          ><i class="fa fa-arrow-left"></i><i class="fa fa-bars"></i></label
+        >Interface SA</span
+      >
+      <ul>
+        <a (click)="goToHome()">
+          <li>Accueil<i class="fa fa-home"></i></li>
+        </a>
+        <a href="">
+          <li>Commande<i class="fa fa-briefcase"></i></li>
+        </a>
+        <a href="">
+          <li>Tarif<i class="far fa-money-bill-alt"></i></li>
+        </a>
+        <a href="">
+          <li>Contact<i class="fas fa-phone"></i></li>
+        </a>
+        <a href="">
+          <li (click)="logout()">
+            Déconnexion<i
+              class="fas fa-sign-out-alt"
+              style="font-size: 36px"
+            ></i>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <div id="page-content">
+      <h1>Bienvenue User</h1>
+    </div>
+  </div>
+</body>

@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
+goToHome() {
+throw new Error('Method not implemented.');
+}
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
