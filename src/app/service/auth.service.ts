@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  isAuthenticated: boolean = false;
+
   constructor(
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
@@ -24,6 +26,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        this.isAuthenticated = true;
         // Enregistre des informations supplémentaires dans Firestore avec le rôle par défaut "client"
         return this.firestore
           .collection('utilisateurs')
@@ -59,6 +62,7 @@ export class AuthService {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
+          this.isAuthenticated = true;
           // Récupère les informations supplémentaires depuis Firestore
           this.firestore
             .collection('utilisateurs')
@@ -88,6 +92,11 @@ export class AuthService {
         console.error('Login error:', error);
         throw error;
       });
+  }
+
+  // Check if user is authenticated
+  getIsAuthenticated(): boolean {
+    return this.isAuthenticated;
   }
 
   // Méthode de déconnexion

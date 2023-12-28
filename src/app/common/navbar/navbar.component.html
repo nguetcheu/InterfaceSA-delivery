@@ -2,7 +2,14 @@
   <span class="logo">INTERFACE-delivery App</span>
 
   <div class="auth">
-    <button (click)="goToSignUp()">Inscription</button>
-    <span class="login" (click)="goToLogin()">Connexion</span>
+    <button *ngIf="!getAuthentificated()" (click)="goToSignUp()">
+      Inscription
+    </button>
+    <span class="login" *ngIf="!getAuthentificated()" (click)="goToLogin()"
+      >Connexion</span
+    >
+    <span class="login" *ngIf="getAuthentificated()" (click)="goToClient()"
+      >Commande</span
+    >
   </div>
 </div>

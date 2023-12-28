@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -7,12 +8,13 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
-goToHome() {
-throw new Error('Method not implemented.');
-}
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  goToHome() {
+    this.router.navigate(['']);
+  }
 
   logout() {
     this.authService.logout();

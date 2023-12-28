@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router) {}
+  isAuthenticated: any;
+
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -17,5 +20,13 @@ export class NavbarComponent implements OnInit {
 
   goToSignUp() {
     this.router.navigate(['inscription']);
+  }
+
+  goToClient() {
+    this.router.navigate(['client']);
+  }
+
+  getAuthentificated(): boolean {
+    return (this.isAuthenticated = this.authService.getIsAuthenticated());
   }
 }
