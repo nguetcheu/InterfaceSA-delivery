@@ -50,8 +50,7 @@ export class AuthService {
           });
       })
       .catch((error) => {
-        console.error('Signup error:', error);
-        throw error;
+        alert(error);
       });
   }
 
@@ -89,7 +88,7 @@ export class AuthService {
         }
       })
       .catch((error) => {
-        console.error('Login error:', error);
+        alert(error);
         throw error;
       });
   }
@@ -112,6 +111,30 @@ export class AuthService {
         console.error('Logout error:', error);
         throw error;
       });
+  }
+
+  // mot de passe oublié
+  forgotPassword(email: string) {
+    this.afAuth.sendPasswordResetEmail(email).then(
+      () => {
+        this.router.navigate(['/verify-email']);
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
+  }
+
+  // email verification
+  sendEmailForVerification(user: any) {
+    user.sendEmailForVerification().then(
+      (res: any) => {
+        this.router.navigate(['/verify-email']);
+      },
+      (err: any) => {
+        alert('Something went wrong. Not able to send mail to your email');
+      }
+    );
   }
 
   // Vérifie le rôle de l'utilisateur et redirige en conséquence

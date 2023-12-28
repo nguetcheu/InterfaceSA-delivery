@@ -17,6 +17,15 @@ export class ConnexionComponent implements OnInit {
 
   login() {
     this.authService.login(this.email, this.password).catch((error) => {
+      if (this.email == '') {
+        alert('Pardon entrer email');
+        return;
+      }
+
+      if (this.password == '') {
+        alert('Pardon entrer password');
+        return;
+      }
       console.error('Erreur lors de la connexion :', error);
       // Gère les erreurs ici
     });

@@ -22,6 +22,8 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 
 import { ClientComponent } from './components/client/client.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { FortgotPasswordComponent } from './common/fortgot-password/fortgot-password.component';
+import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { AdminComponent } from './components/admin/admin.component';
     FooterComponent,
     NotFoundComponent,
     AdminComponent,
+    FortgotPasswordComponent,
+    VerifiyEmailComponent,
   ],
   imports: [
     BrowserModule,

@@ -60,7 +60,8 @@
                       class="bg-primary"
                       style="color: black; cursor: pointer"
                       (click)="goToSignUp()"
-                      > S'inscrire</a
+                    >
+                      S'inscrire</a
                     >
                   </p>
                 </div>
@@ -77,6 +78,7 @@
                       name="email"
                       required
                       [(ngModel)]="email"
+                      min="6"
                     />
                     <label for="email" class="form-label">Email</label>
                   </div>
@@ -90,6 +92,7 @@
                       name="password"
                       required
                       [(ngModel)]="password"
+                      min="6"
                     />
                     <label for="password" class="form-label">Password</label>
                   </div>
@@ -112,7 +115,7 @@
                 <div
                   class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end mt-4"
                 >
-                  <a href="#!">Forgot password</a>
+                  <a routerLink="/forgot">Mot de passe oublié</a>
                 </div>
               </div>
             </div>
@@ -121,7 +124,7 @@
                 <p class="mt-4 mb-4">Or continue with</p>
                 <div class="d-flex gap-2 gap-sm-3 justify-content-centerX">
                   <a
-                    href="#!"
+                    href=""
                     class="btn btn-outline-danger bsb-btn-circle bsb-btn-circle-2xl"
                   >
                     <svg
@@ -138,7 +141,7 @@
                     </svg>
                   </a>
                   <a
-                    href="#!"
+                    href=""
                     class="btn btn-outline-primary bsb-btn-circle bsb-btn-circle-2xl"
                   >
                     <svg

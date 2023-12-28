@@ -26,6 +26,16 @@ export class InscriptionComponent implements OnInit {
         // Redirige l'utilisateur ou effectue d'autres actions après l'inscription réussie
       })
       .catch((error) => {
+        if (this.displayName === '') {
+          alert('Veuillez entrer le nom utilisateur');
+        } else if (this.email === '') {
+          alert("Veuillez entrer l'email");
+        } else if (this.password === '') {
+          alert('Veuillez entrer le mot de passe');
+        } else {
+          // Code à exécuter si toutes les conditions sont remplies
+          // ...
+        }
         console.error('Erreur lors de inscription :', error);
         this.error = error;
         // Gère les erreurs ici

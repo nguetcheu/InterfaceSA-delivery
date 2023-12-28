@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  height: 610px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 60px;
+}
+
+.content {
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    padding: 5px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
