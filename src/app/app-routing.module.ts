@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientComponent } from './components/client/client.component';
 import { AdminComponent } from './components/admin/admin.component';
+
+/* Composant Client */
+import { ClientComponent } from './components/client/client.component';
 
 /* Common component */
 
@@ -16,6 +18,8 @@ import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.comp
 
 import { AuthGuardAdmin } from './guards/admin.guard';
 import { AuthGuard } from './guards/client.guard';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { CommandeComponent } from './components/commande/commande.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -27,6 +31,16 @@ const routes: Routes = [
   { path: 'forgot', component: FortgotPasswordComponent },
   { path: 'verify-email', component: VerifiyEmailComponent },
   { path: 'client', component: ClientComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contact',
+    component: ContactFormComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'commande',
+    component: CommandeComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
   { path: '**', component: NotFoundComponent },
 ];

@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Composant commun a tout app web */
 import { AccueilComponent } from './common/accueil/accueil.component';
@@ -24,6 +24,9 @@ import { ClientComponent } from './components/client/client.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FortgotPasswordComponent } from './common/fortgot-password/fortgot-password.component';
 import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { CommandeComponent } from './components/commande/commande.component';
+import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +41,14 @@ import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.comp
     AdminComponent,
     FortgotPasswordComponent,
     VerifiyEmailComponent,
+    ContactFormComponent,
+    CommandeComponent,
+    CommandeFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
