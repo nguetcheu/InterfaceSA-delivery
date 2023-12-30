@@ -104,8 +104,8 @@ export class AuthService {
       .signOut()
       .then(() => {
         // Supprime les informations d'authentification de sessionStorage
+        this.router.navigate(['/']);
         sessionStorage.removeItem('user');
-        this.router.navigate(['/connexion']);
       })
       .catch((error) => {
         console.error('Logout error:', error);
@@ -127,7 +127,7 @@ export class AuthService {
 
   // email verification
   sendEmailForVerification(user: any) {
-    user.sendEmailForVerification().then(
+    user.sendEmailVerification().then(
       (res: any) => {
         this.router.navigate(['/verify-email']);
       },

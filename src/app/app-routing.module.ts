@@ -20,6 +20,7 @@ import { AuthGuardAdmin } from './guards/admin.guard';
 import { AuthGuard } from './guards/client.guard';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CommandeComponent } from './components/commande/commande.component';
+import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'commande',
     component: CommandeComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'commandeForm',
+    component: CommandeFormComponent,
     canActivate: [AuthGuard],
   },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },

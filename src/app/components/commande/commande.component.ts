@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FirebaseService } from 'src/app/service/firebase.service';
 
 @Component({
   selector: 'app-commande',
@@ -10,9 +14,28 @@ export class CommandeComponent implements OnInit {
   cost!: number;
   orders: any[] = [];
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private firebase: FirebaseService,
+    private firestore: AngularFirestore
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const userUUID = this.firebase.getUserIdFromSessionStorage();
+
+    if (userUUID) {
+      this.firebase.getOrdersByUUID(userUUID).subscribe(
+        (data: any[]) => {
+          console.log('Orders:', data); // Ajoutez cette ligne pour vérifier les données
+          this.orders = data;
+        },
+        error => {
+          console.error('Erreur lors de la récupération des commandes', error);
+        }
+      );
+    }
+  }
+
 
   convert() {
     if (isNaN(this.weight)) {
@@ -30,5 +53,7 @@ export class CommandeComponent implements OnInit {
     }
   }
 
-  goToAddOrder() {}
+  goToAddOrder() {
+    this.router.navigate(['/commandeForm']);
+  }
 }

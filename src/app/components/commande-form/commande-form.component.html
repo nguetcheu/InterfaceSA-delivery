@@ -1,1 +1,151 @@
-<p>commande-form works!</p>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Formulaire d'expédition</title>
+  </head>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">Formulaire d'expédition</h5>
+
+            <form (ngSubmit)="submitForm()">
+              <div class="form-group">
+                <label for="senderEmail">
+                  <i class="fas fa-envelope"></i>
+                  Email expéditeur:</label
+                >
+                <input
+                  class="form-control"
+                  type="email"
+                  id="senderEmail"
+                  name="senderEmail"
+                  [(ngModel)]="formData.senderEmail"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="poids">
+                  <i class="fas fa-weight"></i>
+                  Poids:</label
+                >
+                <input
+                  class="form-control"
+                  type="number"
+                  id="poids"
+                  name="poids"
+                  [(ngModel)]="formData.poids"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="prix">
+                  <i class="fas fa-dollar-sign"></i>
+                  Prix:</label
+                >
+                <input
+                  class="form-control"
+                  type="number"
+                  id="prix"
+                  name="prix"
+                  [(ngModel)]="formData.prix"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="originCountry">
+                  <i class="fas fa-globe"></i>
+                  Pays origine:</label
+                >
+                <select
+                  class="form-control"
+                  id="originCountry"
+                  name="originCountry"
+                  [(ngModel)]="formData.originCountry"
+                  required
+                >
+                  <option
+                    *ngFor="let country of countries"
+                    [value]="country.name"
+                  >
+                    {{ country.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label for="destinationCountry">
+                  <i class="fas fa-globe"></i>
+                  Pays arrivée:</label
+                >
+                <select
+                  class="form-control"
+                  id="destination"
+                  name="destination"
+                  [(ngModel)]="formData.destinationCountry"
+                  required
+                >
+                  <option
+                    *ngFor="let country of countries"
+                    [value]="country.name"
+                  >
+                    {{ country.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label for="dateExpedition">
+                  <i class="fas fa-calendar"></i>
+                  Date d'expédition:</label
+                >
+                <input
+                  class="form-control"
+                  type="date"
+                  id="dateExpedition"
+                  name="dateExpedition"
+                  [(ngModel)]="formData.dateExpedition"
+                  required
+                />
+              </div>
+
+              <button
+                class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]="
+                  formData.senderEmail == '' ||
+                  formData.dateExpedition == '' ||
+                  formData.destinationCountry == '' ||
+                  formData.originCountry == '' ||
+                  formData.poids == 0 ||
+                  formData.prix == 0
+                "
+              >
+                <i class="fas fa-paper-plane"></i>
+                Envoyer
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

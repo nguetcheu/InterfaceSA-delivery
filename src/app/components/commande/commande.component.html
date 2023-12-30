@@ -23,6 +23,13 @@
             style="margin: 30px; font-size: 25px; cursor: pointer"
           ></i>
         </h1>
+        <h1 class="header-order" routerLink="/client">
+          Retour vers commande
+          <i
+            class="fa fa-arrow-circle-left"
+            style="margin: 30px; font-size: 25px; cursor: pointer"
+          ></i>
+        </h1>
 
         <div class="conversion">
           <div class="conversion-header">
@@ -52,17 +59,19 @@
                 <tr>
                   <th width="2%">Numéro de commande</th>
                   <th width="2%">Email expéditeur</th>
-                  <th width="2%">Receiver email</th>
-                  <th width="1%">Shipping Address</th>
-                  <th width="1%">Delivery Address</th>
+                  <th width="2%">Pays origine</th>
+                  <th width="1%">Pays d'arrivée</th>
+                  <th width="1%">Poids du colis (kg)</th>
+                  <th width="1%">Date envoi</th>
                 </tr>
                 <tbody *ngIf="orders">
                   <tr *ngFor="let order of orders">
-                    <td>{{ order.orderTrackingNumber }}</td>
-                    <td>{{ order.sender_email }}</td>
-                    <td>{{ order.receiver_email }}</td>
-                    <td>{{ order.deliveryAddress.chefLieu }}</td>
-                    <td>{{ order.shippingAddress.chefLieu }}</td>
+                    <td>{{ order.numeroDecommande }}</td>
+                    <td>{{ order.senderEmail }}</td>
+                    <td>{{ order.destinationCountry }}</td>
+                    <td>{{ order.originCountry }}</td>
+                    <td>{{ order.poids }}</td>
+                    <td>{{ order.dateExpedition }}</td>
                   </tr>
                 </tbody>
               </table>
