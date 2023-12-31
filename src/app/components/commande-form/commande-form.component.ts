@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/service/firebase.service';
@@ -24,7 +23,6 @@ export class CommandeFormComponent implements OnInit {
   };
 
   constructor(
-    private firestore: AngularFirestore,
     private firebase: FirebaseService,
     private router: Router,
     private http: HttpClient,
@@ -67,9 +65,8 @@ export class CommandeFormComponent implements OnInit {
     const numeroDecommande = this.generateRandomOrderNumber();
     if (userId) {
       const commandData = { ...this.formData, userId, numeroDecommande };
-      this.firestore
-        .collection('commandes')
-        .add(commandData)
+      this.firebase
+        .addCommande(commandData)
         .then(() => {
           alert('Commande ajoutée avec succès.');
           this.router.navigate(['/client']);

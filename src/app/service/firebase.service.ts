@@ -24,7 +24,14 @@ export class FirebaseService {
       .valueChanges();
   }
 
-  addCommande(commande: any) {
-    return this.firestore.collection('commandes').add(commande);
+  addCommande(commande: any): Promise<void> {
+    // Générez un ID spécifique pour la commande
+    const commandId = this.firestore.createId();
+
+    // Ajoutez la commande avec l'ID spécifique
+    return this.firestore.collection('commandes').doc(commandId).set({
+      ...commande,
+      id: commandId, // Vous pouvez inclure l'ID dans les données de la commande si nécessaire
+    });
   }
 }
