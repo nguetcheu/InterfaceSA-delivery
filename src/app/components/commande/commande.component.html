@@ -59,19 +59,28 @@
                 <tr>
                   <th width="2%">Numéro de commande</th>
                   <th width="2%">Email expéditeur</th>
-                  <th width="2%">Pays origine</th>
+                  <th width="1%">Pays origine</th>
                   <th width="1%">Pays d'arrivée</th>
                   <th width="1%">Poids du colis (kg)</th>
                   <th width="1%">Date envoi</th>
+                  <th width="1%">Editer</th>
                 </tr>
                 <tbody *ngIf="orders">
-                  <tr *ngFor="let order of orders">
+                  <tr *ngFor="let order of orders" routerLink="">
                     <td>{{ order.numeroDecommande }}</td>
                     <td>{{ order.senderEmail }}</td>
                     <td>{{ order.destinationCountry }}</td>
                     <td>{{ order.originCountry }}</td>
                     <td>{{ order.poids }}</td>
                     <td>{{ order.dateExpedition }}</td>
+                    <td>
+                      <button
+                        class="btn btn-primary"
+                        (click)="editOrder(order.id)"
+                      >
+                        Editer
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

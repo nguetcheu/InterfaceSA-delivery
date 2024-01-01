@@ -14,28 +14,22 @@ export class CommandeComponent implements OnInit {
   cost!: number;
   orders: any[] = [];
 
-  constructor(
-    private router: Router,
-    private firebase: FirebaseService,
-    private firestore: AngularFirestore
-  ) {}
+  constructor(private router: Router, private firebase: FirebaseService) {}
 
   ngOnInit(): void {
     const userUUID = this.firebase.getUserIdFromSessionStorage();
 
     if (userUUID) {
       this.firebase.getOrdersByUUID(userUUID).subscribe(
-        (data: any[]) => {
-          console.log('Orders:', data); // Ajoutez cette ligne pour vérifier les données
+        (data: any[]) => { // Ajoutez cette ligne pour vérifier les données
           this.orders = data;
         },
-        error => {
+        (error) => {
           console.error('Erreur lors de la récupération des commandes', error);
         }
       );
     }
   }
-
 
   convert() {
     if (isNaN(this.weight)) {
@@ -55,5 +49,9 @@ export class CommandeComponent implements OnInit {
 
   goToAddOrder() {
     this.router.navigate(['/commandeForm']);
+  }
+
+  editOrder(orderId: string): void {
+    this.router.navigate(['/edit-commande', orderId]);
   }
 }

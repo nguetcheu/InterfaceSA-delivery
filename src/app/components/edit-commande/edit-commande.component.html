@@ -24,7 +24,8 @@
           <div class="card-body">
             <h5 class="card-title text-center">Formulaire d'expédition</h5>
 
-            <form (ngSubmit)="submitForm()">
+            <form (ngSubmit)="onSubmit()">
+              <!-- Sender Email -->
               <div class="form-group">
                 <label for="senderEmail">
                   <i class="fas fa-envelope"></i>
@@ -35,7 +36,7 @@
                   type="email"
                   id="senderEmail"
                   name="senderEmail"
-                  [(ngModel)]="formData.senderEmail"
+                  [(ngModel)]="orderDetails.senderEmail"
                   required
                 />
               </div>
@@ -50,7 +51,7 @@
                   type="number"
                   id="poids"
                   name="poids"
-                  [(ngModel)]="formData.poids"
+                  [(ngModel)]="orderDetails.poids"
                   required
                 />
               </div>
@@ -65,7 +66,7 @@
                   type="number"
                   id="prix"
                   name="prix"
-                  [(ngModel)]="formData.prix"
+                  [(ngModel)]="orderDetails.prix"
                   required
                 />
               </div>
@@ -79,7 +80,7 @@
                   class="form-control"
                   id="originCountry"
                   name="originCountry"
-                  [(ngModel)]="formData.originCountry"
+                  [(ngModel)]="orderDetails.originCountry"
                   required
                 >
                   <option
@@ -100,7 +101,7 @@
                   class="form-control"
                   id="destinationCountry"
                   name="destinationCountry"
-                  [(ngModel)]="formData.destinationCountry"
+                  [(ngModel)]="orderDetails.destinationCountry"
                   required
                 >
                   <option
@@ -112,6 +113,7 @@
                 </select>
               </div>
 
+              <!-- Date Expedition -->
               <div>
                 <label for="dateExpedition">
                   <i class="fas fa-calendar"></i>
@@ -122,21 +124,22 @@
                   type="date"
                   id="dateExpedition"
                   name="dateExpedition"
-                  [(ngModel)]="formData.dateExpedition"
+                  [(ngModel)]="orderDetails.dateExpedition"
                   required
                 />
               </div>
 
+              <!-- Submit Button -->
               <button
                 class="btn btn-primary btn-block"
                 type="submit"
                 [disabled]="
-                  formData.senderEmail == '' ||
-                  formData.dateExpedition == '' ||
-                  formData.destinationCountry == '' ||
-                  formData.originCountry == '' ||
-                  formData.poids == 0 ||
-                  formData.prix == 0
+                  orderDetails.senderEmail == '' ||
+                  orderDetails.dateExpedition == '' ||
+                  orderDetails.destinationCountry == '' ||
+                  orderDetails.originCountry == '' ||
+                  orderDetails.poids == 0 ||
+                  orderDetails.prix == 0
                 "
               >
                 <i class="fas fa-paper-plane"></i>

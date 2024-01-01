@@ -31,6 +31,7 @@ import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.comp
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
+import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CommandeFormComponent } from './components/commande-form/commande-form.
     ContactFormComponent,
     CommandeComponent,
     CommandeFormComponent,
+    EditCommandeComponent,
   ],
   imports: [
     BrowserModule,

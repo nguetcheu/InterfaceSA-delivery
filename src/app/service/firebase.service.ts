@@ -1,37 +1,60 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
+  order!: any;
   constructor(private firestore: AngularFirestore) {}
 
+  // Récuperation de uid depuis sessionStorage
   getUserIdFromSessionStorage(): string | null {
     const userString = sessionStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);
-      console.log(userData.uid);
       return userData.uid;
     }
     return null;
   }
 
+  // Utilisez AngularFirestore pour récupérer les commandes en fonction de l'UUID
   getOrdersByUUID(uid: string) {
-    // Utilisez AngularFirestore pour récupérer les commandes en fonction de l'UUID
     return this.firestore
       .collection('commandes', (ref) => ref.where('userId', '==', uid))
       .valueChanges();
   }
 
+  // Ajout d'une commande
   addCommande(commande: any): Promise<void> {
     // Générez un ID spécifique pour la commande
     const commandId = this.firestore.createId();
 
     // Ajoutez la commande avec l'ID spécifique
-    return this.firestore.collection('commandes').doc(commandId).set({
-      ...commande,
-      id: commandId, // Vous pouvez inclure l'ID dans les données de la commande si nécessaire
-    });
+    return this.firestore
+      .collection('commandes')
+      .doc(commandId)
+      .set({
+        ...commande,
+        id: commandId, // Vous pouvez inclure l'ID dans les données de la commande si nécessaire
+      });
+  }
+
+  // Récuperation d'une commande par id
+  getOrderById(orderId: string): Observable<any> {
+    const orderDocRef = this.firestore.collection('commandes').doc(orderId);
+    // @ts-ignore
+    this.order = orderDocRef.valueChanges().pipe(first());
+    return this.order;
+  }
+
+  // Mise a jour d'une commande
+  updateCommand(commandId: string, updatedCommand: any): Promise<void> {
+    return this.firestore
+      .collection('commandes')
+      .doc(commandId)
+      .update(updatedCommand);
   }
 }
