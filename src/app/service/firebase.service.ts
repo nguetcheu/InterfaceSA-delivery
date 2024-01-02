@@ -42,6 +42,21 @@ export class FirebaseService {
       });
   }
 
+  // envoyer un email
+  sendEmail(message: any): Promise<void> {
+    // Générez un ID spécifique pour la commande
+    const emailId = this.firestore.createId();
+
+    // Ajoutez email avec l'ID spécifique
+    return this.firestore
+      .collection('messages')
+      .doc(emailId)
+      .set({
+        ...message,
+        id: emailId, // Vous pouvez inclure l'ID dans les données de la commande si nécessaire
+      });
+  }
+
   // Récuperation d'une commande par id
   getOrderById(orderId: string): Observable<any> {
     const orderDocRef = this.firestore.collection('commandes').doc(orderId);
