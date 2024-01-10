@@ -32,10 +32,13 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
+import { MessageComponent } from './components/message/message.component';
+import { TimestampToDatePipe } from './Pipes/TimestampToDatePipe .pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TimestampToDatePipe,
     InscriptionComponent,
     ConnexionComponent,
     ClientComponent,
@@ -50,6 +53,7 @@ import { EditCommandeComponent } from './components/edit-commande/edit-commande.
     CommandeComponent,
     CommandeFormComponent,
     EditCommandeComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

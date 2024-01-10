@@ -22,6 +22,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
+import { MessageComponent } from './components/message/message.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -54,6 +55,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
+  {
+    path: 'message',
+    component: MessageComponent,
+    canActivate: [AuthGuardAdmin],
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

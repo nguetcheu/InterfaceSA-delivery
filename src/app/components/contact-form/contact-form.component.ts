@@ -15,7 +15,8 @@ export class ContactFormComponent implements OnInit {
     name: '',
     email: '',
     message: '',
-    phone: +237 ,
+    phone: +237,
+    dateMessage: new Date().toDateString(),
   };
 
   constructor(

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -7,9 +8,28 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  messages!: any[];
+  messageCount!: number;
+  commandeCount!: number;
 
-  ngOnInit(): void {}
+  constructor(
+    private authService: AuthService,
+    private adminService: AdminService
+  ) {}
+
+  ngOnInit(): void {
+    this.adminService
+      .getMessages()
+      .subscribe((messages) => (this.messages = messages));
+
+    this.adminService.getMessageCount().subscribe((count) => {
+      this.messageCount = count;
+    });
+
+    this.adminService.getCollectionCount().subscribe((count) => {
+      this.commandeCount = count;
+    });
+  }
 
   logout() {
     this.authService.logout();
