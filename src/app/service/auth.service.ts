@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
+    private authService: FirebaseService,
     private router: Router
   ) {}
 
@@ -91,6 +94,15 @@ export class AuthService {
         alert(error);
         throw error;
       });
+  }
+
+  getUser(): Observable<any> {
+    // Récupérer l'UID de l'utilisateur connecté
+    const userId = this.authService.getUserIdFromSessionStorage();
+
+    // @ts-ignore
+    // Récupérer les données de l'utilisateur depuis Firestore
+    return this.firestore.collection('utilisateurs').doc(userId).valueChanges();
   }
 
   // Check if user is authenticated

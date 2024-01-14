@@ -8,9 +8,17 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
+  displayName: string = 'User';
+
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.getUser().subscribe((user) => {
+      if (user && user.displayName) {
+        this.displayName = user.displayName;
+      }
+    });
+  }
 
   goToHome() {
     this.router.navigate(['']);
