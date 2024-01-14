@@ -45,7 +45,26 @@
                   name="poids"
                   [(ngModel)]="formData.poids"
                   required
+                  (change)="onWeightOrTransportChange()"
                 />
+              </div>
+
+              <div>
+                <label for="modeTransport">
+                  <i class="fas fa-shipping-fast"></i>
+                  Mode de transport :</label
+                >
+                <select
+                  class="form-control"
+                  id="modeTransport"
+                  name="modeTransport"
+                  [(ngModel)]="formData.modeTransport"
+                  required
+                  (change)="onWeightOrTransportChange()"
+                >
+                  <option value="terrestre">Terrestre</option>
+                  <option value="bateau">Bateau</option>
+                </select>
               </div>
 
               <div>
@@ -60,6 +79,7 @@
                   name="prix"
                   [(ngModel)]="formData.prix"
                   required
+                  disabled="true"
                 />
               </div>
 
@@ -129,7 +149,8 @@
                   formData.destinationCountry == '' ||
                   formData.originCountry == '' ||
                   formData.poids == 0 ||
-                  formData.prix == 0
+                  formData.prix == 0 ||
+                  formData.modeTransport == ''
                 "
               >
                 <i class="fas fa-paper-plane"></i>

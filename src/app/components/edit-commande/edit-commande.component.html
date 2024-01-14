@@ -46,7 +46,26 @@
                   name="poids"
                   [(ngModel)]="orderDetails.poids"
                   required
+                  (change)="onWeightOrTransportChange()"
                 />
+              </div>
+
+              <div>
+                <label for="modeTransport">
+                  <i class="fas fa-shipping-fast"></i>
+                  Mode de transport :</label
+                >
+                <select
+                  class="form-control"
+                  id="modeTransport"
+                  name="modeTransport"
+                  [(ngModel)]="orderDetails.modeTransport"
+                  required
+                  (change)="onWeightOrTransportChange()"
+                >
+                  <option value="terrestre">Terrestre</option>
+                  <option value="bateau">Bateau</option>
+                </select>
               </div>
 
               <div>
@@ -61,6 +80,7 @@
                   name="prix"
                   [(ngModel)]="orderDetails.prix"
                   required
+                  disabled="true"
                 />
               </div>
 
