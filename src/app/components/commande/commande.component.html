@@ -26,16 +26,16 @@
 
         <div class="conversion">
           <div class="conversion-header">
-            <span>weight(kg)</span>
+            <span>Montant en (Euros)</span>
             <span>To</span>
 
-            <span>Cost(XAF)</span>
+            <span>Montant en (XAF)</span>
           </div>
 
           <div class="conversion-body">
-            <input type="number" [(ngModel)]="weight" name="weight" />
+            <input type="number" [(ngModel)]="montantEuro" name="montantEuro" />
 
-            <input type="number" [(ngModel)]="cost" name="cost" />
+            <input type="number" [(ngModel)]="cost" name="francs" />
           </div>
 
           <button class="conversion-btn" (click)="convert()">Convert</button>

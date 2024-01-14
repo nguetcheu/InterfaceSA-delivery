@@ -10,7 +10,7 @@ import { FirebaseService } from 'src/app/service/firebase.service';
   styleUrls: ['./commande.component.scss'],
 })
 export class CommandeComponent implements OnInit {
-  weight!: number;
+  montantEuro!: number;
   cost!: number;
   orders: any[] = [];
 
@@ -21,7 +21,8 @@ export class CommandeComponent implements OnInit {
 
     if (userUUID) {
       this.firebase.getOrdersByUUID(userUUID).subscribe(
-        (data: any[]) => { // Ajoutez cette ligne pour vérifier les données
+        (data: any[]) => {
+          // Ajoutez cette ligne pour vérifier les données
           this.orders = data;
         },
         (error) => {
@@ -32,17 +33,15 @@ export class CommandeComponent implements OnInit {
   }
 
   convert() {
-    if (isNaN(this.weight)) {
+    if (isNaN(this.montantEuro)) {
       alert('Veuillez saisir un poids valide.');
       return;
     }
 
-    if (this.weight >= 1 && this.weight <= 5) {
-      this.cost = 10000;
-    } else if (this.weight > 5 && this.weight <= 10) {
-      this.cost = 15000;
+    if (this.montantEuro > 1) {
+      this.cost = this.montantEuro * 655;
     } else {
-      alert('Le poids doit être compris entre 1 et 10 kg.');
+      alert('La somme doit être supérieur a 1 euros.');
       return;
     }
   }
