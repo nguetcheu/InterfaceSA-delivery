@@ -70,6 +70,12 @@ export class AdminService {
     return messageRef.delete();
   }
 
+  // Obtenir la collection messages depuis firestore
+  getUtilisateurs(): Observable<any[]> {
+    // @ts-ignore
+    return this.utilisateursCollection.valueChanges();
+  }
+
   // Obtenir le nombre utilisateurs depuis firestore
   getUtilisateursCount(): Observable<number> {
     // @ts-ignore
