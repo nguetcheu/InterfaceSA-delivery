@@ -20,6 +20,21 @@ export class AdminService {
     this.utilisateursCollection = this.firestore.collection('utilisateurs');
   }
 
+  // Méthode pour sommer le champ 'prix' de tous les documents de la collection 'commandes'
+  sommePrix(): Observable<number> {
+    // @ts-ignore
+    return this.firestore
+      .collection('commandes')
+      .valueChanges()
+      .pipe(
+        // Utilisez l'opérateur reduce pour effectuer la somme
+        // @ts-ignore
+        map((commands: any[]) =>
+          commands.reduce((acc, command) => acc + command.prix, 0)
+        )
+      );
+  }
+
   // Obtenir la collection messages depuis firestore
   getMessages(): Observable<any[]> {
     // @ts-ignore
@@ -35,6 +50,12 @@ export class AdminService {
         return messages.length;
       })
     );
+  }
+
+  // Suppresion d'un message de la collection
+  deleteMessage(messageId: string): Promise<void> {
+    const messageRef = this.firestore.collection('messages').doc(messageId);
+    return messageRef.delete();
   }
 
   // Obtenir le nombre utilisateurs depuis firestore
@@ -57,11 +78,5 @@ export class AdminService {
         return collection.length;
       })
     );
-  }
-
-  // Suppresion d'un message de la collection
-  deleteMessage(messageId: string): Promise<void> {
-    const messageRef = this.firestore.collection('messages').doc(messageId);
-    return messageRef.delete();
   }
 }

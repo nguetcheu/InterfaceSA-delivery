@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   utilisateurCount!: number;
   messageCount!: number;
   commandeCount!: number;
+  montantCommande!: number;
 
   constructor(
     private authService: AuthService,
@@ -33,6 +34,10 @@ export class AdminComponent implements OnInit {
 
     this.adminService.getUtilisateursCount().subscribe((utilisateurCount) => {
       this.utilisateurCount = utilisateurCount;
+    });
+
+    this.adminService.sommePrix().subscribe((montant) => {
+      this.montantCommande = montant;
     });
   }
 
