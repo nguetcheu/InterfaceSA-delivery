@@ -20,6 +20,18 @@ export class AdminService {
     this.utilisateursCollection = this.firestore.collection('utilisateurs');
   }
 
+  // Obtenir la collection commandes depuis firestore
+  getCommandes(): Observable<any[]> {
+    // @ts-ignore
+    return this.commandesCollection.valueChanges();
+  }
+
+  // Suppresion d'un commande de la collection
+  deleteCommande(commandeId: string): Promise<void> {
+    const commandeRef = this.firestore.collection('commandes').doc(commandeId);
+    return commandeRef.delete();
+  }
+
   // Méthode pour sommer le champ 'prix' de tous les documents de la collection 'commandes'
   sommePrix(): Observable<number> {
     // @ts-ignore
