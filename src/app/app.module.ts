@@ -35,6 +35,7 @@ import { EditCommandeComponent } from './components/edit-commande/edit-commande.
 import { MessageComponent } from './components/message/message.component';
 import { TimestampToDatePipe } from './Pipes/TimestampToDatePipe .pipe';
 import { AdminClientComponent } from './components/admin-client/admin-client.component';
+import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AdminClientComponent } from './components/admin-client/admin-client.com
     EditCommandeComponent,
     MessageComponent,
     AdminClientComponent,
+    AdminCommandeComponent,
   ],
   imports: [
     BrowserModule,

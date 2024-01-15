@@ -104,7 +104,9 @@
         <li class="nav-item">
           <a class="nav-link collapsed">
             <i class="fas fa-box"></i>
-            <span style="cursor: pointer">Commandes</span>
+            <span style="cursor: pointer" routerLink="/adminCommande"
+              >Commandes</span
+            >
           </a>
         </li>
 
@@ -112,7 +114,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed">
             <i class="fas fa-user"></i>
-            <span style="cursor: pointer" routerLink="/clientAdmin"
+            <span style="cursor: pointer" routerLink="/adminClient"
               >Utilisateurs</span
             >
           </a>
@@ -281,7 +283,7 @@
                         <div
                           class="text-xs font-weight-bold text-success text-uppercase mb-1"
                           style="cursor: pointer"
-                          routerLink="/clientAdmin"
+                          routerLink="/adminClient"
                         >
                           Utilisateurs
                         </div>
@@ -305,6 +307,8 @@
                       <div class="col mr-2">
                         <div
                           class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                          style="cursor: pointer"
+                          routerLink="/adminCommande"
                         >
                           Commandes
                         </div>
