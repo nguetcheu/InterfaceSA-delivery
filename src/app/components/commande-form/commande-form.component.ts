@@ -89,7 +89,7 @@ export class CommandeFormComponent implements OnInit {
         .addCommande(commandData)
         .then(() => {
           alert('Commande ajoutée avec succès.');
-          this.router.navigate(['/client']);
+          this.router.navigate(['/commande']);
         })
         .catch((error) => {
           console.error("Erreur lors de l'ajout de la commande :", error);
