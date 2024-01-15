@@ -23,6 +23,7 @@ import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
 import { MessageComponent } from './components/message/message.component';
+import { AdminClientComponent } from './components/admin-client/admin-client.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -55,6 +56,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
+  {
+    path: 'clientAdmin',
+    component: AdminClientComponent,
+    canActivate: [AuthGuardAdmin],
+  },
   {
     path: 'message',
     component: MessageComponent,

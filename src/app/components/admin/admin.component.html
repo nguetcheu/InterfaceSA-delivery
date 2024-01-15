@@ -112,7 +112,9 @@
         <li class="nav-item">
           <a class="nav-link collapsed">
             <i class="fas fa-user"></i>
-            <span style="cursor: pointer">Utilisateurs</span>
+            <span style="cursor: pointer" routerLink="/clientAdmin"
+              >Utilisateurs</span
+            >
           </a>
         </li>
 
@@ -259,7 +261,7 @@
                           Montant (Total)
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          {{ montantCommande }} 
+                          {{ montantCommande }}
                         </div>
                       </div>
                       <div class="col-auto">
@@ -278,6 +280,8 @@
                       <div class="col mr-2">
                         <div
                           class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                          style="cursor: pointer"
+                          routerLink="/clientAdmin"
                         >
                           Utilisateurs
                         </div>
