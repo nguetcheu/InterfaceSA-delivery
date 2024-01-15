@@ -40,7 +40,7 @@ export class AdminService {
   // Obtenir le nombre utilisateurs depuis firestore
   getUtilisateursCount(): Observable<number> {
     // @ts-ignore
-    return this.commandesCollection.valueChanges().pipe(
+    return this.utilisateursCollection.valueChanges().pipe(
       // @ts-ignore
       map((utilisateurs) => {
         return utilisateurs.length;
