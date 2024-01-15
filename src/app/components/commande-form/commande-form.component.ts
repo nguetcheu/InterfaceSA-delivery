@@ -61,13 +61,12 @@ export class CommandeFormComponent implements OnInit {
     return result;
   }
 
-  // Ajoutez cette fonction pour calculer automatiquement le prix
+  // fonction pour calculer automatiquement le prix
   calculatePrice(): void {
-    // Ajoutez vos propres règles pour calculer le prix en fonction du poids et du mode de transport
-    if (this.formData.modeTransport === 'terrestre') {
+    if (this.formData.modeTransport === 'Terrestre') {
       // Par exemple, 1000 francs par kilogramme pour le transport terrestre
       this.formData.prix = this.formData.poids * 1000;
-    } else if (this.formData.modeTransport === 'bateau') {
+    } else if (this.formData.modeTransport === 'Bateau') {
       // Par exemple, 2000 francs par kilogramme pour le transport par bateau
       this.formData.prix = this.formData.poids * 2000;
     } else {
@@ -76,7 +75,7 @@ export class CommandeFormComponent implements OnInit {
     }
   }
 
-  // Appelez cette fonction chaque fois que le poids ou le mode de transport change
+  // Appele de la fonction chaque fois que le poids ou le mode de transport change
   onWeightOrTransportChange(): void {
     this.calculatePrice();
   }
