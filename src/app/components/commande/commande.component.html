@@ -59,7 +59,7 @@
                   <th width="1%">Editer</th>
                 </tr>
                 <tbody *ngIf="orders">
-                  <tr *ngFor="let order of orders" routerLink="">
+                  <tr *ngFor="let order of orders">
                     <td>{{ order.numeroDecommande }}</td>
                     <td>{{ order.senderEmail }}</td>
                     <td>{{ order.destinationCountry }}</td>
