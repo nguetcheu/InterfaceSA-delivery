@@ -12,10 +12,12 @@ import { map } from 'rxjs/internal/operators/map';
 export class AdminService {
   private messagesCollection: AngularFirestoreCollection<any>;
   private commandesCollection: AngularFirestoreCollection<any>;
+  private utilisateursCollection: AngularFirestoreCollection<any>;
 
   constructor(private firestore: AngularFirestore) {
     this.messagesCollection = this.firestore.collection('messages');
     this.commandesCollection = this.firestore.collection('commandes');
+    this.utilisateursCollection = this.firestore.collection('utilisateurs');
   }
 
   // Obtenir la collection messages depuis firestore
@@ -31,6 +33,17 @@ export class AdminService {
       // @ts-ignore
       map((messages) => {
         return messages.length;
+      })
+    );
+  }
+
+  // Obtenir le nombre utilisateurs depuis firestore
+  getUtilisateursCount(): Observable<number> {
+    // @ts-ignore
+    return this.commandesCollection.valueChanges().pipe(
+      // @ts-ignore
+      map((utilisateurs) => {
+        return utilisateurs.length;
       })
     );
   }

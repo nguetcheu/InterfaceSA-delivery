@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class AdminComponent implements OnInit {
   messages!: any[];
+  utilisateurCount!: number;
   messageCount!: number;
   commandeCount!: number;
 
@@ -28,6 +29,10 @@ export class AdminComponent implements OnInit {
 
     this.adminService.getCollectionCount().subscribe((count) => {
       this.commandeCount = count;
+    });
+
+    this.adminService.getUtilisateursCount().subscribe((utilisateurCount) => {
+      this.utilisateurCount = utilisateurCount;
     });
   }
 
