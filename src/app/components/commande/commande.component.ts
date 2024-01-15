@@ -14,7 +14,11 @@ export class CommandeComponent implements OnInit {
   cost!: number;
   orders: any[] = [];
 
-  constructor(private router: Router, private firebase: FirebaseService) {}
+  constructor(
+    private router: Router,
+    private firebase: FirebaseService,
+    private firestore: AngularFirestore
+  ) {}
 
   ngOnInit(): void {
     const userUUID = this.firebase.getUserIdFromSessionStorage();
@@ -52,5 +56,18 @@ export class CommandeComponent implements OnInit {
 
   editOrder(orderId: string): void {
     this.router.navigate(['/edit-commande', orderId]);
+  }
+
+  // Suppresion d'un commande de la collection
+  deleteCommande(commandeId: string): Promise<void> {
+    const commandeRef = this.firestore.collection('commandes').doc(commandeId);
+    return commandeRef.delete();
+  }
+
+  // Méthode pour afficher le poids ou le volume réel de Firebase
+  getWeightOrVolume(order: any): string {
+    return order.modeTransport === 'Bateau'
+      ? order.weightOrVolume + ' mètre cube'
+      : order.weightOrVolume + ' kg';
   }
 }

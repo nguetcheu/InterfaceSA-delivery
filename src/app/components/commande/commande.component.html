@@ -46,7 +46,7 @@
           <div class="container-fluid">
             <div>
               <table
-                class="table table-bordered"
+                class="table table-bordered table-hover"
                 style="background-color: #f0d95d"
               >
                 <tr>
@@ -54,8 +54,9 @@
                   <th width="2%">Email expéditeur</th>
                   <th width="1%">Pays origine</th>
                   <th width="1%">Pays d'arrivée</th>
-                  <th width="1%">Poids du colis (kg)</th>
+                  <th width="1%">Poids ou volume du colis</th>
                   <th width="1%">Date envoi</th>
+                  <th width="1%">Mode de transport</th>
                   <th width="1%">Cout du transport</th>
                   <th width="1%">Editer</th>
                 </tr>
@@ -63,10 +64,11 @@
                   <tr *ngFor="let order of orders">
                     <td>{{ order.numeroDecommande }}</td>
                     <td>{{ order.senderEmail }}</td>
-                    <td>{{ order.destinationCountry }}</td>
                     <td>{{ order.originCountry }}</td>
-                    <td>{{ order.poids }}</td>
+                    <td>{{ order.destinationCountry }}</td>
+                    <td>{{ getWeightOrVolume(order) }}</td>
                     <td>{{ order.dateExpedition }}</td>
+                    <td>{{ order.modeTransport }}</td>
                     <td>{{ order.prix }}</td>
                     <td>
                       <button
@@ -74,6 +76,12 @@
                         (click)="editOrder(order.id)"
                       >
                         Editer
+                      </button>
+                      <button
+                        class="btn btn-danger"
+                        (click)="deleteCommande(order.id)"
+                      >
+                        Supprimer
                       </button>
                     </td>
                   </tr>

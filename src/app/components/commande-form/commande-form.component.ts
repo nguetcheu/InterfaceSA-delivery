@@ -15,12 +15,13 @@ export class CommandeFormComponent implements OnInit {
   formData = {
     senderEmail: '',
     numeroDecommande: '',
-    poids: 0,
     prix: 0,
+    nbreColis: 0,
     modeTransport: '',
     originCountry: '',
     destinationCountry: '',
     dateExpedition: '',
+    weightOrVolume: 0,
   };
 
   constructor(
@@ -65,10 +66,10 @@ export class CommandeFormComponent implements OnInit {
   calculatePrice(): void {
     if (this.formData.modeTransport === 'Terrestre') {
       // Par exemple, 1000 francs par kilogramme pour le transport terrestre
-      this.formData.prix = this.formData.poids * 1000;
+      this.formData.prix = this.formData.weightOrVolume * 1000;
     } else if (this.formData.modeTransport === 'Bateau') {
       // Par exemple, 2000 francs par kilogramme pour le transport par bateau
-      this.formData.prix = this.formData.poids * 2000;
+      this.formData.prix = this.formData.weightOrVolume * 2000;
     } else {
       // Cas par défaut, si le mode de transport n'est pas spécifié
       this.formData.prix = 0;
