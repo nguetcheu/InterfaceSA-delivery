@@ -29,12 +29,21 @@
                   <th width="2%">Nom du client</th>
                   <th width="2%">Email</th>
                   <th width="2%">Role</th>
+                  <th width="2%">Editer</th>
                 </tr>
                 <tbody *ngIf="utilisateurs">
                   <tr *ngFor="let utilisateur of utilisateurs">
                     <td>{{ utilisateur.displayName }}</td>
                     <td>{{ utilisateur.email }}</td>
                     <td>{{ utilisateur.role }}</td>
+                    <td>
+                      <button
+                        class="btn btn-danger"
+                        (click)="deleteUtilisateur(utilisateur.uid)"
+                      >
+                        Supprimer
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

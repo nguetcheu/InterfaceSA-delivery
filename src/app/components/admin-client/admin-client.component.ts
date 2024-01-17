@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { AdminService } from 'src/app/service/admin.service';
 export class AdminClientComponent implements OnInit {
   utilisateurs: any[] = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private firestore: AngularFirestore
+  ) {}
 
   ngOnInit(): void {
     // @ts-ignore
@@ -18,5 +22,13 @@ export class AdminClientComponent implements OnInit {
       .subscribe((utilisateurs) => {
         this.utilisateurs = utilisateurs;
       });
+  }
+
+  // Suppresion d'un commande de la collection
+  deleteUtilisateur(utilisateurId: string): Promise<void> {
+    const utilisateurRef = this.firestore
+      .collection('utilisateurs')
+      .doc(utilisateurId);
+    return utilisateurRef.delete();
   }
 }
