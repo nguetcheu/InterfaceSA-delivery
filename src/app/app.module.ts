@@ -23,7 +23,6 @@ import { InscriptionComponent } from './common/inscription/inscription.component
 import { NotFoundComponent } from './common/not-found/not-found.component';
 
 /* Composant fonctionnel de application */
-
 import { ClientComponent } from './components/client/client.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { FortgotPasswordComponent } from './common/fortgot-password/fortgot-password.component';
@@ -36,6 +35,7 @@ import { MessageComponent } from './components/message/message.component';
 import { TimestampToDatePipe } from './Pipes/TimestampToDatePipe .pipe';
 import { AdminClientComponent } from './components/admin-client/admin-client.component';
 import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
+import { AdminGraphComponent } from './components/admin-graph/admin-graph.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { AdminCommandeComponent } from './components/admin-commande/admin-comman
     MessageComponent,
     AdminClientComponent,
     AdminCommandeComponent,
+    AdminGraphComponent,
   ],
   imports: [
     BrowserModule,

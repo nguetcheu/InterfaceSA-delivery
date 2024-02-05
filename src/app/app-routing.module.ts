@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+/* Composant Admin */
 import { AdminComponent } from './components/admin/admin.component';
+import { AdminClientComponent } from './components/admin-client/admin-client.component';
+import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
+import { MessageComponent } from './components/message/message.component';
 
 /* Composant Client */
 import { ClientComponent } from './components/client/client.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { CommandeComponent } from './components/commande/commande.component';
+import { CommandeFormComponent } from './components/commande-form/commande-form.component';
+import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
 
 /* Common component */
-
 import { InscriptionComponent } from './common/inscription/inscription.component';
 import { ConnexionComponent } from './common/connexion/connexion.component';
 import { AccueilComponent } from './common/accueil/accueil.component';
@@ -15,16 +23,8 @@ import { FortgotPasswordComponent } from './common/fortgot-password/fortgot-pass
 import { VerifiyEmailComponent } from './common/verifiy-email/verifiy-email.component';
 
 /* Restriction des routes */
-
 import { AuthGuardAdmin } from './guards/admin.guard';
 import { AuthGuard } from './guards/client.guard';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { CommandeComponent } from './components/commande/commande.component';
-import { CommandeFormComponent } from './components/commande-form/commande-form.component';
-import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
-import { MessageComponent } from './components/message/message.component';
-import { AdminClientComponent } from './components/admin-client/admin-client.component';
-import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
