@@ -36,6 +36,7 @@ import { TimestampToDatePipe } from './Pipes/TimestampToDatePipe .pipe';
 import { AdminClientComponent } from './components/admin-client/admin-client.component';
 import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
 import { AdminGraphComponent } from './components/admin-graph/admin-graph.component';
+import { AdminPieComponent } from './components/admin-pie/admin-pie.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AdminGraphComponent } from './components/admin-graph/admin-graph.compon
     AdminClientComponent,
     AdminCommandeComponent,
     AdminGraphComponent,
+    AdminPieComponent,
   ],
   imports: [
     BrowserModule,
