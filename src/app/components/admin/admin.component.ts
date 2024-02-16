@@ -41,6 +41,10 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  printPage() {
+    window.print();
+  }
+
   logout() {
     this.authService.logout();
   }
