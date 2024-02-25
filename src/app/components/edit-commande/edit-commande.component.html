@@ -35,22 +35,6 @@
               </div>
 
               <div>
-                <label for="poids">
-                  <i class="fas fa-weight"></i>
-                  Poids:</label
-                >
-                <input
-                  class="form-control"
-                  type="number"
-                  id="poids"
-                  name="poids"
-                  [(ngModel)]="orderDetails.poids"
-                  required
-                  (change)="onWeightOrTransportChange()"
-                />
-              </div>
-
-              <div>
                 <label for="modeTransport">
                   <i class="fas fa-shipping-fast"></i>
                   Mode de transport :</label
@@ -63,9 +47,27 @@
                   required
                   (change)="onWeightOrTransportChange()"
                 >
-                  <option value="terrestre">Terrestre</option>
-                  <option value="bateau">Bateau</option>
+                  <option value="Terrestre">Terrestre</option>
+                  <option value="Bateau">Bateau</option>
                 </select>
+              </div>
+
+              <div class="form-group">
+                <label for="weightOrVolume">
+                  <i class="fas fa-weight"></i>
+                  {{
+                    orderDetails.modeTransport === "Bateau" ? "Volume Total" : "Poids Total"
+                  }}:
+                </label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="weightOrVolume"
+                  name="weightOrVolume"
+                  [(ngModel)]="orderDetails.weightOrVolume"
+                  required
+                  (change)="onWeightOrTransportChange()"
+                />
               </div>
 
               <div>

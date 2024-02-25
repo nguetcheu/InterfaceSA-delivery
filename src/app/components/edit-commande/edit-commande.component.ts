@@ -57,12 +57,12 @@ export class EditCommandeComponent implements OnInit {
   // Ajoutez cette fonction pour calculer automatiquement le prix
   calculatePrice(): void {
     // Ajoutez vos propres règles pour calculer le prix en fonction du poids et du mode de transport
-    if (this.orderDetails.modeTransport === 'terrestre') {
+    if (this.orderDetails.modeTransport === 'Terrestre') {
       // Par exemple, 1000 francs par kilogramme pour le transport terrestre
-      this.orderDetails.prix = this.orderDetails.poids * 1000;
-    } else if (this.orderDetails.modeTransport === 'bateau') {
+      this.orderDetails.prix = this.orderDetails.weightOrVolume * 1000;
+    } else if (this.orderDetails.modeTransport === 'Bateau') {
       // Par exemple, 2000 francs par kilogramme pour le transport par bateau
-      this.orderDetails.prix = this.orderDetails.poids * 2000;
+      this.orderDetails.prix = this.orderDetails.weightOrVolume * 2000;
     } else {
       // Cas par défaut, si le mode de transport n'est pas spécifié
       this.orderDetails.prix = 0;
