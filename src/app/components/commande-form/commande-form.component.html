@@ -71,7 +71,9 @@
                   <label for="weightOrVolume">
                     <i class="fas fa-weight"></i>
                     {{
-                      formData.modeTransport === "Bateau" ? "Volume Total" : "Poids Total"
+                      formData.modeTransport === "Bateau"
+                        ? "Volume Total"
+                        : "Poids Total"
                     }}:
                   </label>
                   <input

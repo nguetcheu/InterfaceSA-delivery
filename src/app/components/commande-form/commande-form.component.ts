@@ -21,6 +21,7 @@ export class CommandeFormComponent implements OnInit {
     originCountry: '',
     destinationCountry: '',
     dateExpedition: '',
+    statut: '',
     weightOrVolume: 0,
   };
 
