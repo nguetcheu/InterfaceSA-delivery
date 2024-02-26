@@ -160,6 +160,24 @@
                   />
                 </div>
 
+                <div class="form-group">
+                  <label for="modeTransport">
+                    <i class="fas fa-shipping-fast"></i>
+                    Statut :</label
+                  >
+                  <select
+                    class="form-control"
+                    id="statut"
+                    name="statut"
+                    [(ngModel)]="formData.statut"
+                    required
+                    disabled="true"
+                  >
+                    <option value="enAttente" selected>En attente</option>
+                    <option value="valide">Validé</option>
+                  </select>
+                </div>
+
                 <button
                   class="btn btn-primary btn-block"
                   type="submit"
