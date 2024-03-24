@@ -41,7 +41,9 @@
       </ul>
     </div>
     <div id="page-content">
-      <h1>Bienvenue {{ displayName }}</h1>
+      <div id="user-profile" [ngClass]="{'menu-active': menuActive}">
+        <h1>Bienvenue {{ displayName }}</h1>
+      </div>
     </div>
   </div>
 </body>

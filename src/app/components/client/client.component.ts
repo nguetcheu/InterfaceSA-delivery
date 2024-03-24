@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ClientComponent implements OnInit {
   displayName: string = 'User';
 
+  menuActive: boolean = false; // Propriété pour suivre l'état du menu
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -18,6 +20,11 @@ export class ClientComponent implements OnInit {
         this.displayName = user.displayName;
       }
     });
+  }
+
+  // Méthode pour changer l'état du menu
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
   }
 
   goToHome() {

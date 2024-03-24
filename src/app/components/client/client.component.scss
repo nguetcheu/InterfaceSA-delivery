@@ -22,8 +22,9 @@ body {
   left: 0;
   bottom: 0;
   width: 200px;
-  background-color: #3b71ca;
-  transition: all 1s;
+  background: linear-gradient(to bottom, #3b71ca, #1e4674);
+  transition: all 0.5s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 #menu_active:checked + #wrapper #menu {
@@ -49,11 +50,9 @@ body {
 #site-name {
   color: white;
   display: block;
-  padding: 10px;
+  padding: 20px 10px;
   font-size: 24px;
   line-height: 30px;
-  margin-bottom: 50px;
-  padding-right: 0px;
 }
 
 #site-name i {
@@ -72,14 +71,15 @@ body {
 #menu ul li {
   color: white;
   list-style: none;
-  padding: 10px;
+  padding: 15px 5px;
   border-left: 4px solid transparent;
-  padding-right: 0px;
+  transition: all 0.3s ease;
 }
 
 #menu ul li:hover {
   color: #f0d95d;
   border-left: 4px solid #f0d95d;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 #menu ul li i {
@@ -92,4 +92,25 @@ body {
   color: white;
   display: block;
   height: 100%;
+}
+
+// Gestion arriére plan dynamique
+#user-profile {
+  h1 {
+    position: relative;
+    z-index: 1; /* Assure que le texte est devant l'image d'arrière-plan */
+  }
+
+  &[menu-active] {
+    background-image: url(../../../assets/client.jpg);
+  }
+
+  /* Image d'arrière-plan par défaut lorsque le menu n'est pas actif */
+  background-image: url(../../../assets/client.jpg);
+  background-size: cover; /* Ajuste la taille de l'image */
+  background-position: center; /* Centre l'image d'arrière-plan */
+  height: 200px; /* Ajustez la hauteur selon vos besoins */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
