@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 export class AdminCommandeComponent implements OnInit {
   commandes!: any[];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
     this.adminService.getCommandes().subscribe((commandes) => {
@@ -27,5 +28,9 @@ export class AdminCommandeComponent implements OnInit {
       .catch((error) => {
         console.error('Erreur lors de la suppression de la commande', error);
       });
+  }
+
+  printTable() {
+    window.print();
   }
 }

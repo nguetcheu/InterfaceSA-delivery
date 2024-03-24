@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Convert | Export html Table to CSV & EXCEL File</title>
 
     <link
       rel="stylesheet"
@@ -16,6 +15,7 @@
     <main class="table" id="customers_table">
       <section class="table__header">
         <h1>Commande client</h1>
+        <button class="fas fa-print" (click)="printTable()">Imprimer</button>
       </section>
       <section class="table__body">
         <table>
