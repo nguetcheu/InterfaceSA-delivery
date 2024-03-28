@@ -37,7 +37,6 @@ import { AdminClientComponent } from './components/admin-client/admin-client.com
 import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
 import { AdminGraphComponent } from './components/admin-graph/admin-graph.component';
 import { AdminPieComponent } from './components/admin-pie/admin-pie.component';
-import { ClientMessageComponent } from './components/client-message/client-message.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +61,6 @@ import { ClientMessageComponent } from './components/client-message/client-messa
     AdminCommandeComponent,
     AdminGraphComponent,
     AdminPieComponent,
-    ClientMessageComponent,
   ],
   imports: [
     BrowserModule,

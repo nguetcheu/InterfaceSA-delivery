@@ -13,7 +13,6 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { CommandeComponent } from './components/commande/commande.component';
 import { CommandeFormComponent } from './components/commande-form/commande-form.component';
 import { EditCommandeComponent } from './components/edit-commande/edit-commande.component';
-import { ClientMessageComponent } from './components/client-message/client-message.component';
 
 /* Common component */
 import { InscriptionComponent } from './common/inscription/inscription.component';
@@ -40,11 +39,6 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactFormComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'clientMessage',
-    component: ClientMessageComponent,
     canActivate: [AuthGuard],
   },
   {
