@@ -51,13 +51,18 @@ export class AdminService {
   replyToMessage(messageId: string, replyMessage: string): Promise<void> {
     // Créer un objet contenant les détails du message de réponse
     const replyData = {
+      email: 'admin@gmail.com',
       message: replyMessage,
       // Ajoutez d'autres détails comme l'ID de l'administrateur, la date, etc., si nécessaire
     };
 
     // @ts-ignore
     // Mettre à jour la collection de messages avec le nouveau message de réponse
-    return this.firestore.collection('messages').doc(messageId).collection('replies').add(replyData);
+    return this.firestore
+      .collection('messages')
+      .doc(messageId)
+      .collection('replies')
+      .add(replyData);
   }
 
   // Obtenir la collection messages depuis firestore

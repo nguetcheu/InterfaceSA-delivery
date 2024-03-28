@@ -72,4 +72,11 @@ export class FirebaseService {
       .doc(commandId)
       .update(updatedCommand);
   }
+
+  getReplies(): Observable<any[]> {
+    // @ts-ignore
+    return this.firestore
+      .collection('messages')
+      .valueChanges({ idField: 'id' });
+  }
 }
