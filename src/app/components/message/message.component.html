@@ -34,6 +34,9 @@
               <td>{{ message.message }}</td>
               <td width="30%">{{ message.dateMessage | date : "medium" }}</td>
               <td>
+                <button type="button" class="btn btn-primary btn-sm" (click)="replyToMessage(message.id, message.email)">
+                  <i class="fas fa-reply"></i> Répondre
+                </button>
                 <button
                   type="button"
                   class="btn btn-danger btn-sm"

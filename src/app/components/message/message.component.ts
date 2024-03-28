@@ -27,4 +27,18 @@ export class MessageComponent implements OnInit {
         console.error('Erreur lors de la suppression du message', error);
       });
   }
+
+  replyToMessage(messageId: string, userEmail: string): void {
+    const replyMessage = window.prompt('Répondre à ' + userEmail + ' :');
+    if (replyMessage !== null) {
+      this.adminService
+        .replyToMessage(messageId, replyMessage)
+        .then(() => {
+          alert('Message de réponse envoyé avec succès à Firebase');
+        })
+        .catch((error) => {
+          alert("Erreur lors de l'envoi du message de réponse à :" + userEmail);
+        });
+    }
+  }
 }
