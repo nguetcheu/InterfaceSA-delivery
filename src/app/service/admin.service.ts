@@ -26,6 +26,11 @@ export class AdminService {
     return this.commandesCollection.valueChanges();
   }
 
+  // Mise a jour statut d'une commande
+  updateCommandeStatut(commandeId: string, newStatut: string): Promise<void> {
+    return this.firestore.collection('commandes').doc(commandeId).update({ statut: newStatut });
+  }
+
   // Suppresion d'un commande de la collection
   deleteCommande(commandeId: string): Promise<void> {
     const commandeRef = this.firestore.collection('commandes').doc(commandeId);

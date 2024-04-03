@@ -18,6 +18,17 @@ export class AdminCommandeComponent implements OnInit {
     });
   }
 
+  updateStatut(commande: any): void {
+    this.adminService.updateCommandeStatut(commande.id, commande.statut)
+      .then(() => {
+        console.log('Statut de la commande mis à jour avec succès');
+      })
+      .catch((error) => {
+        console.error('Erreur lors de la mise à jour du statut de la commande', error);
+      });
+  }
+  
+
   deleteCommande(messageId: string): void {
     this.adminService
       .deleteCommande(messageId)
