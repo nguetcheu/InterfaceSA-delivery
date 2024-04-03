@@ -14,8 +14,12 @@ export class AdminGraphComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getCommandes().subscribe((data: any[]) => {
+
+      // Filtrer les commandes ayant le statut "valide"
+      const commandesValides = data.filter(commande => commande.statut === 'valide');
+
       // Agréger les montants par date
-      const aggregatedData = this.aggregateDataByDate(data);
+      const aggregatedData = this.aggregateDataByDate(commandesValides);
 
       // Trier les dates de la plus ancienne à la plus récente
       const sortedDates = Object.keys(aggregatedData).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
