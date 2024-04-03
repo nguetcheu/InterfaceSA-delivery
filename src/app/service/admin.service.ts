@@ -36,7 +36,7 @@ export class AdminService {
   sommePrix(): Observable<number> {
     // @ts-ignore
     return this.firestore
-      .collection('commandes')
+      .collection('commandes', (ref) => ref.where('statut', '==', 'valide'))
       .valueChanges()
       .pipe(
         // Utilisez l'opérateur reduce pour effectuer la somme
