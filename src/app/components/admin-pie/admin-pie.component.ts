@@ -14,8 +14,12 @@ export class AdminPieComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getCommandes().subscribe((data: any[]) => {
+
+      // Filtrer les commandes ayant le statut "valide"
+      const commandesValides = data.filter(commande => commande.statut === 'valide');
+
       // Agréger le nombre de commandes par client
-      const aggregatedData = this.aggregateDataByClient(data);
+      const aggregatedData = this.aggregateDataByClient(commandesValides);
 
       // Trier les clients par le nombre de commandes (du plus grand au plus petit)
       const sortedClients = Object.keys(aggregatedData).sort((a, b) => aggregatedData[b] - aggregatedData[a]);
