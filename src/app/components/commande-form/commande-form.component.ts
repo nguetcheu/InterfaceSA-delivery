@@ -15,6 +15,7 @@ export class CommandeFormComponent implements OnInit {
   formData = {
     senderEmail: '',
     numeroDecommande: '',
+    phone: 0,
     prix: 0,
     nbreColis: 0,
     modeTransport: '',

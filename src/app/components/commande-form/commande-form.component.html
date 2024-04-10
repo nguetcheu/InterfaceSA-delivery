@@ -35,6 +35,21 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="senderEmail">
+                    <i class="fas fa-phone"></i>
+                    Numéro de téléphone expéditeur:</label
+                  >
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    [(ngModel)]="formData.phone"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
                   <label for="modeTransport">
                     <i class="fas fa-shipping-fast"></i>
                     Mode de transport :</label
