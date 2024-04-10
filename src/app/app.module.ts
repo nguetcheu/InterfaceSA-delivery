@@ -37,6 +37,7 @@ import { AdminClientComponent } from './components/admin-client/admin-client.com
 import { AdminCommandeComponent } from './components/admin-commande/admin-commande.component';
 import { AdminGraphComponent } from './components/admin-graph/admin-graph.component';
 import { AdminPieComponent } from './components/admin-pie/admin-pie.component';
+import { AdminPieStandbyComponent } from './components/admin-pie-standby/admin-pie-standby.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { AdminPieComponent } from './components/admin-pie/admin-pie.component';
     AdminCommandeComponent,
     AdminGraphComponent,
     AdminPieComponent,
+    AdminPieStandbyComponent,
   ],
   imports: [
     BrowserModule,
