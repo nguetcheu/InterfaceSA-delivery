@@ -28,7 +28,10 @@ export class AdminService {
 
   // Mise a jour statut d'une commande
   updateCommandeStatut(commandeId: string, newStatut: string): Promise<void> {
-    return this.firestore.collection('commandes').doc(commandeId).update({ statut: newStatut });
+    return this.firestore
+      .collection('commandes')
+      .doc(commandeId)
+      .update({ statut: newStatut });
   }
 
   // Suppresion d'un commande de la collection
@@ -49,6 +52,30 @@ export class AdminService {
         map((commands: any[]) =>
           commands.reduce((acc, command) => acc + command.prix, 0)
         )
+      );
+  }
+
+  // Méthode pour récupérer le nombre de commandes avec le statut "valide"
+  getNombreCommandesValide(): Observable<number> {
+    // @ts-ignore
+    return this.firestore
+      .collection('commandes', (ref) => ref.where('statut', '==', 'valide'))
+      .valueChanges()
+      .pipe(
+        // @ts-ignore
+        map((commands: any[]) => commands.length)
+      );
+  }
+
+  // Méthode pour récupérer le nombre de commandes avec le statut "enAttente"
+  getNombreCommandesEnAttente(): Observable<number> {
+    // @ts-ignore
+    return this.firestore
+      .collection('commandes', (ref) => ref.where('statut', '==', 'enAttente'))
+      .valueChanges()
+      .pipe(
+        // @ts-ignore
+        map((commands: any[]) => commands.length)
       );
   }
 

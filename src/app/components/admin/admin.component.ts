@@ -14,6 +14,9 @@ export class AdminComponent implements OnInit {
   commandeCount!: number;
   montantCommande!: number;
 
+  commandeValide!: number;
+  commandeEnAttente!: number;
+
   constructor(
     private authService: AuthService,
     private adminService: AdminService
@@ -38,6 +41,14 @@ export class AdminComponent implements OnInit {
 
     this.adminService.sommePrix().subscribe((montant) => {
       this.montantCommande = montant;
+    });
+
+    this.adminService.getNombreCommandesEnAttente().subscribe((commande) => {
+      this.commandeEnAttente = commande;
+    });
+
+    this.adminService.getNombreCommandesValide().subscribe((commande) => {
+      this.commandeValide = commande;
     });
   }
 
