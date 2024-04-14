@@ -50,14 +50,15 @@
                 style="background-color: #f0d95d"
               >
                 <tr>
-                  <th width="2%">Numéro de commande</th>
-                  <th width="1%">Email expéditeur</th>
-                  <th width="1%">Pays origine</th>
-                  <th width="1%">Pays d'arrivée</th>
-                  <th width="1%">Poids ou volume du colis</th>
-                  <th width="1%">Date envoi</th>
-                  <th width="1%">Mode de transport</th>
-                  <th width="1%">Cout du transport(FCFA)</th>
+                  <th width="1%">Numéro de commande</th>
+                  <th width="0.5%">Email expéditeur</th>
+                  <th width="0.5%">Pays origine</th>
+                  <th width="0.5%">Pays d'arrivée</th>
+                  <th width="0.5%">Poids ou volume du colis</th>
+                  <th width="0.5%">Statut colis</th>
+                  <th width="0.5%">Date envoi</th>
+                  <th width="0.5%">Mode de transport</th>
+                  <th width="0.5%">Cout du transport(FCFA)</th>
                   <th width="1%">Editer</th>
                 </tr>
                 <tbody *ngIf="orders">
@@ -67,6 +68,7 @@
                     <td>{{ order.originCountry }}</td>
                     <td>{{ order.destinationCountry }}</td>
                     <td>{{ getWeightOrVolume(order) }}</td>
+                    <td>{{ order.statut }}</td>
                     <td>{{ order.dateExpedition }}</td>
                     <td>{{ order.modeTransport }}</td>
                     <td>{{ order.prix }}</td>
