@@ -1,24 +1,17 @@
 * {
   margin: 0;
   padding: 0;
-
   box-sizing: border-box;
   font-family: sans-serif;
 }
 
 @media print {
-  .table,
-  .table__body {
+  .table, .table__body {
     overflow: visible;
     height: auto !important;
     width: auto !important;
   }
 }
-
-/*@page {
-  size: landscape;
-  margin: 0; 
-}*/
 
 body {
   min-height: 100vh;
@@ -32,11 +25,9 @@ main.table {
   width: 92vw;
   height: 90vh;
   background-color: #fff5;
-
   backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem 0.8rem #0005;
   border-radius: 0.8rem;
-
   overflow: hidden;
 }
 
@@ -45,7 +36,6 @@ main.table {
   height: 10%;
   background-color: #fff4;
   padding: 0.8rem 1rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,12 +47,10 @@ main.table {
   background-color: #fff5;
   padding: 0 0.8rem;
   border-radius: 2rem;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  transition: 0.2s;
+  transition: width 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 .table__header .input-group:hover {
@@ -88,10 +76,8 @@ main.table {
   width: 95%;
   max-height: calc(89% - 1.6rem);
   background-color: #fffb;
-
   margin: 0.8rem auto;
   border-radius: 0.6rem;
-
   overflow: auto;
   overflow: overlay;
 }
@@ -111,22 +97,7 @@ main.table {
   visibility: visible;
 }
 
-table {
-  width: 100%;
-}
-
-td img {
-  width: 36px;
-  height: 36px;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-
-  vertical-align: middle;
-}
-
-table,
-th,
-td {
+table, th, td {
   border-collapse: collapse;
   padding: 1rem;
   text-align: left;
@@ -165,19 +136,6 @@ tbody tr td img {
   transition: 0.2s ease-in-out;
 }
 
-tbody tr.hide td,
-tbody tr.hide td p {
-  padding: 0;
-  font: 0 / 0 sans-serif;
-  transition: 0.2s ease-in-out 0.5s;
-}
-
-tbody tr.hide td img {
-  width: 0;
-  height: 0;
-  transition: 0.2s ease-in-out 0.5s;
-}
-
 .status {
   padding: 0.4rem 0;
   border-radius: 2rem;
@@ -214,10 +172,8 @@ thead th span.icon-arrow {
   height: 1.3rem;
   border-radius: 50%;
   border: 1.4px solid transparent;
-
   text-align: center;
   font-size: 1rem;
-
   margin-left: 0.5rem;
   transition: 0.2s ease-in-out;
 }
@@ -246,34 +202,28 @@ tbody td.active {
 
 .transparent-button {
   background-color: transparent;
-  border: 1px solid #ffffff; /* Couleur de la bordure (remplacez par la couleur souhaitée) */
-  color: #ffffff; /* Couleur du texte (remplacez par la couleur souhaitée) */
-  padding: 10px 20px; /* Remplacez les valeurs selon vos préférences */
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Ajoute une transition en douceur lors du survol */
-
-  /* Optionnel : Style supplémentaire pour le survol */
-  &:hover {
-    background-color: rgba(
-      255,
-      0,
-      0,
-      0.5
-    ); /* Ajoutez une légère opacité au survol (remplacez par la couleur souhaitée) */
-  }
+  transition: background-color 0.3s ease;
 }
 
-/* Ajoutez ces styles à votre fichier CSS */
-.blue-bg {
-  padding: 0.4rem 0;
-  border-radius: 2rem;
-  text-align: center;
-  background-color: blue;
+.transparent-button:hover {
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
+.blue-bg,
 .brown-bg {
   padding: 0.4rem 0;
   border-radius: 2rem;
   text-align: center;
+}
+
+.blue-bg {
+  background-color: blue;
+}
+
+.brown-bg {
   background-color: brown;
 }
